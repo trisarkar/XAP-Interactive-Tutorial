@@ -47,11 +47,11 @@ try {
     Admin admin = new AdminFactory().useDaemonThreads(true).addLocators(lookuplocators).addGroups(lookupgroups).createAdmin();
     def pus = admin.getProcessingUnits().waitFor(gridname, 10, TimeUnit.SECONDS);
     if (pus == null) {
-        Demo.print_color("_RUnable to find myDataGrid processing unit_X")
+        print_color("|RED|Unable to find myDataGrid processing unit|CLEAR|")
         System.exit(1)
     }
     if (! pus.waitFor(1)) {
-        Demo.print_color("_RUnable to find myDataGrid instances_X")
+        print_color("|RED|Unable to find myDataGrid instances|CLEAR|")
         System.exit(1)
     }
 
