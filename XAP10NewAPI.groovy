@@ -65,8 +65,6 @@ try {
             .addFixedProperty("id", Long.class).supportsDynamicProperties(true).create())
     println ""
 
-    space.clear(new Object())
-
     print_color("|YELLOW|Writing 9 Person objects:|CLEAR|")
     print_color("\tid[0-2], age[10-12], country[UK]")
     print_color("\tid[3-5], age[13-15], country[U.S.A]")
