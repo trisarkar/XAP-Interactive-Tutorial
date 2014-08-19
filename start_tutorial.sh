@@ -36,7 +36,7 @@ echo "Choose one of the options for tutorial bellow:"
 echo -e "${LIGHT_GREEN}1]${NC} XAP Demo - Write/Read to/from myDataGrid space"
 echo -e "${LIGHT_GREEN}2]${NC} XAP 10 New API - Query Aggregation, Custom Change"
 echo -e "${LIGHT_GREEN}3]${NC} XAP Interactive Shell"
-echo -e "${LIGHT_GREEN}0]${NC} exit"
+echo -e "${LIGHT_GREEN}0]${NC} Exit"
 echo -n "Your choice: "
 
 while true; do

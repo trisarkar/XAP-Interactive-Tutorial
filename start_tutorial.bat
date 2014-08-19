@@ -37,7 +37,7 @@ echo  XAP 10 New API - Query Aggregation, Custom Change
 call :ColorText %LIGHT_GREEN% "3]"
 echo  XAP Interactive Shell
 call :ColorText %LIGHT_GREEN% "0]"
-echo  exit
+echo  Exit
 set /p case= Your choice:
 
 :choiceloop
