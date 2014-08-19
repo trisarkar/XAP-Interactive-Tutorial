@@ -211,6 +211,10 @@ try {
     println ""
     println ""
 
+    print_color "|GREEN|Press ENTER to exit|CLEAR|"
+    br.readLine()
+
+    admin.close();
 } catch (Exception e) {
     e.printStackTrace()
     print_color("|RED|Error occurred: " + e.toString() + "|CLEAR|")

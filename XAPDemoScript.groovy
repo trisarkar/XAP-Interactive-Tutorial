@@ -222,6 +222,8 @@ try {
     def gigaSpace = admin.getProcessingUnits().getProcessingUnit(gridname).getSpace().getGigaSpace()
     def demo = new Demo()
     demo.run(gigaSpace)
+
+    admin.close();
 } catch (Exception e) {
     e.printStackTrace()
     Demo.print_color("_RError occurred: " + e.toString()+"_X")
