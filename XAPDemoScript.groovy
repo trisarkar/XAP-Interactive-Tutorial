@@ -20,18 +20,24 @@ public class Demo {
     EngineerPojo engineer;
 
     private void writePojos(GigaSpace gigaSpace) {
-        printCommands('gigaSpace.write(new EngineerPojo(123, "Me", "groovy"));' +
-                'gigaSpace.write(new EngineerPojo(345, "you", "java"));');
-
+        printCommands('' +
+                '   gigaSpace.write(new EngineerPojo(123, "Me", "groovy"));\n' +
+                '   gigaSpace.write(new EngineerPojo(345, "you", "java"));');
+        println ""
+        println ""
         gigaSpace.write(new EngineerPojo(123, "Me", "groovy"));
         gigaSpace.write(new EngineerPojo(345, "you", "java"));
     }
 
     private void writeDocument1(GigaSpace gigaSpace) {
-        printCommands('document.setProperty("id", 789);' +
-                'document.setProperty("name", "he");' +
-                'document.setProperty("age", 21);' +
-                'gigaSpace.write(document);');
+        printCommands('' +
+                '   document = new SpaceDocument("demo.EngineerPojo");\n' +
+                '   document.setProperty("id", 789);\n' +
+                '   document.setProperty("name", "he");\n' +
+                '   document.setProperty("age", 21);\n' +
+                '   gigaSpace.write(document);');
+        println ""
+        println ""
 
         document.setProperty("id", 789);
         document.setProperty("name", "he");
@@ -40,10 +46,13 @@ public class Demo {
     }
 
     private void writeDocument2(GigaSpace gigaSpace) {
-        printCommands('document.setProperty("id", 743);' +
-                'document.setProperty("name", "she");' +
-                'document.setProperty("age", 21);' +
-                'gigaSpace.write(document);');
+        printCommands('' +
+                '   document.setProperty("id", 743);\n' +
+                '   document.setProperty("name", "she");\n' +
+                '   document.setProperty("age", 21);\n' +
+                '   gigaSpace.write(document);');
+        println ""
+        println ""
 
         document.setProperty("id", 743);
         document.setProperty("name", "she");
@@ -52,43 +61,59 @@ public class Demo {
     }
 
     private void testReadPojo(GigaSpace gigaSpace) {
-        printCommands('engineer = gigaSpace.read(new EngineerPojo(123));' +
-                'System.out.println(engineer);');
+        printCommands('' +
+                '   engineer = gigaSpace.read(new EngineerPojo(123));\n' +
+                '   System.out.println(engineer);');
+        println ""
+
         print_color "_YResult: _X"
 
         engineer = gigaSpace.read(new EngineerPojo(123));
-        System.out.println(engineer);
+        System.out.println("    "+engineer);
+        println ""
+        println ""
     }
 
     private void testReadDocument(GigaSpace gigaSpace) {
-        printCommands('document.setProperty("id", 345);' +
-                'SpaceDocument engineerDoc = gigaSpace.read(document);' +
-                'System.out.println(engineerDoc);');
+        printCommands('' +
+                '   document.setProperty("id", 345);\n' +
+                '   SpaceDocument engineerDoc = gigaSpace.read(document);\n' +
+                '   System.out.println(engineerDoc);');
+        println ""
+
         print_color "_YResult: _X"
 
         document.setProperty("id", 345);
         SpaceDocument engineerDoc = gigaSpace.read(document);
 
-        System.out.println(engineerDoc);
+        System.out.println("    "+engineerDoc);
+        println ""
+        println ""
     }
 
     private void testReadSQLQuery(GigaSpace gigaSpace) {
-        printCommands('engineer = gigaSpace.read(new SQLQuery<EngineerPojo>(EngineerPojo.class,' +
-                '"id=789 AND name=\'he\'"));' +
-                'System.out.println(engineer);');
+        printCommands('' +
+                '   engineer = gigaSpace.read(new SQLQuery<EngineerPojo>(EngineerPojo.class, "id=789 AND name=\'he\'"));\n' +
+                '   System.out.println(engineer);');
+        println ""
 
         print_color "_YResult: _X"
         engineer = gigaSpace.read(new SQLQuery<EngineerPojo>(EngineerPojo.class,
                 "id=789 AND name='he'"));
-        System.out.println(engineer);
+        System.out.println("    "+engineer);
+        println ""
+        println ""
     }
 
     private void testReadJDBC() throws Exception {
-        printCommands('Class.forName("com.j_spaces.jdbc.driver.GDriver");' +
-                'Connection connection = null;' +
-                'connection = DriverManager.getConnection("jdbc:gigaspaces:url:" + getRemoteSpaceURL());' +
-                'Statement statement = connection.createStatement();' +
-                'statement.execute("SELECT * FROM demo.EngineerPojo WHERE age=21");');
+        printCommands('' +
+                '   Class.forName("com.j_spaces.jdbc.driver.GDriver");\n' +
+                '   Connection connection = null;\n' +
+                '   connection = DriverManager.getConnection("jdbc:gigaspaces:url:" + getRemoteSpaceURL());\n' +
+                '   Statement statement = connection.createStatement();\n' +
+                '   statement.execute("SELECT * FROM demo.EngineerPojo WHERE age=21");');
+        println ""
+
         print_color "_YResults: _X"
         Class.forName("com.j_spaces.jdbc.driver.GDriver");
         Connection connection = null;
@@ -100,8 +125,10 @@ public class Demo {
         int count = 0;
         while (resultSet.next()) {
             count++;
-            System.out.println("JDBC: id=" + resultSet.getInt("id") + " name=" + resultSet.getString("name") + " age=" + resultSet.getInt("age"));
+            System.out.println("    JDBC: id=" + resultSet.getInt("id") + " name=" + resultSet.getString("name") + " age=" + resultSet.getInt("age"));
         }
+        println ""
+        println ""
     }
 
     private String getRemoteSpaceURL() {
@@ -109,17 +136,20 @@ public class Demo {
     }
 
     private void testReadJDBC2() throws Exception {
-        printCommands('Class.forName("com.j_spaces.jdbc.driver.GDriver");' +
-                'String url = getRemoteSpaceURL();' +
-                'System.out.println("permutation url == " + url);' +
-                'Connection connection = DriverManager.getConnection("jdbc:gigaspaces:url:" + url);' +
-                'Statement statement = connection.createStatement();' +
-                'statement.execute("SELECT * FROM demo.EngineerPojo");');
+        printCommands('' +
+                '   Class.forName("com.j_spaces.jdbc.driver.GDriver");\n' +
+                '   String url = getRemoteSpaceURL();\n' +
+                '   System.out.println("permutation url == " + url);\n' +
+                '   Connection connection = DriverManager.getConnection("jdbc:gigaspaces:url:" + url);\n' +
+                '   Statement statement = connection.createStatement();\n' +
+                '   statement.execute("SELECT * FROM demo.EngineerPojo");');
+        println ""
+
         print_color "_YResult: _X"
 
         Class.forName("com.j_spaces.jdbc.driver.GDriver");
         String url = getRemoteSpaceURL();
-        System.out.println("permutation url == " + url);
+        System.out.println("    permutation url == " + url);
         Connection connection = DriverManager.getConnection("jdbc:gigaspaces:url:" + url);
         Statement statement = connection.createStatement();
         statement.execute("SELECT * FROM demo.EngineerPojo");
@@ -128,15 +158,15 @@ public class Demo {
         int count = 0;
         while (resultSet.next()) {
             count++;
-            System.out.println("JDBC: id=" + resultSet.getInt("id") + " name=" + resultSet.getString("name") + " age=" + resultSet.getInt("age"));
+            System.out.println("    JDBC: id=" + resultSet.getInt("id") + " name=" + resultSet.getString("name") + " age=" + resultSet.getInt("age"));
         }
+        println ""
+        println ""
     }
 
-    private void printCommands(String message) {
+    private void printCommands(message) {
         print_color "_YExecuting: _X"
-        for (String s : message.split(";")) {
-            print_color "_P\t" + s + ";_X"
-        }
+        print_color "_P" + message + "_X"
 
     }
 
@@ -150,42 +180,34 @@ public class Demo {
         print_color "_BPress ENTER to write Pojo objects_X"
         br.readLine()
         writePojos(gigaSpace);
-        println ""
 
         print_color "_BPress ENTER to read Pojo objects_X"
         br.readLine()
         testReadPojo(gigaSpace);
-        println ""
 
         print_color "_BPress ENTER to read Document objects_X"
         br.readLine()
         testReadDocument(gigaSpace);
-        println ""
 
         print_color "_BPress ENTER to write Document object_X"
         br.readLine()
         writeDocument1(gigaSpace);
-        println ""
 
         print_color "_BPress ENTER to read using JDBC_X"
         br.readLine()
         testReadJDBC2();
-        println ""
 
         print_color "_BPress ENTER to read using SQLQuery_X"
         br.readLine()
         testReadSQLQuery(gigaSpace);
-        println ""
 
         print_color "_BPress ENTER to write Document object_X"
         br.readLine()
         writeDocument2(gigaSpace);
-        println ""
 
         print_color "_BPress ENTER to read using JDBC_X"
         br.readLine()
         testReadJDBC();
-        println ""
 
         print_color "_BPress ENTER to exit_X"
         br.readLine()
@@ -216,8 +238,6 @@ try {
         Demo.print_color("_RUnable to find myDataGrid instances_X")
         System.exit(1)
     }
-
-    println "Found " + pus.getInstances().length + " space instances";
 
     def gigaSpace = admin.getProcessingUnits().getProcessingUnit(gridname).getSpace().getGigaSpace()
     def demo = new Demo()

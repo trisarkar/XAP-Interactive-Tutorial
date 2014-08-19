@@ -128,7 +128,8 @@ try {
     print_color("|GREEN|Press ENTER to execute multiple aggregation operations|CLEAR|")
     br.readLine()
 
-    print_color_executing_body("    AggregationResult aggregationResult = space.aggregate(query, new AggregationSet().minEntry(\"age\").average(\"age\").minValue(\"age\"));\n" +
+    print_color_executing_body("    AggregationResult aggregationResult = space.aggregate(query, \n" +
+            "                           new AggregationSet().minEntry(\"age\").average(\"age\").minValue(\"age\"));\n" +
             "\n" +
             "    Person youngest = (Person) aggregationResult.get(0);\n" +
             "    Number average = (Number) aggregationResult.get(1);\n" +
