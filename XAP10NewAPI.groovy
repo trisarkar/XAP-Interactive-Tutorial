@@ -105,7 +105,7 @@ try {
 
     print_color_result()
     Number maxAgeInSpace = max(space, query, "age");
-    println "The max age is: ${maxAgeInSpace}"
+    println "   The max age is: ${maxAgeInSpace}"
     println ""
     println ""
 
@@ -120,7 +120,7 @@ try {
     println ""
     print_color_result()
     Person oldestPersonInSpace = maxEntry(space, query, "age");
-    println "Got Person with id: ${oldestPersonInSpace.getId()} and age: ${oldestPersonInSpace.getAge()}"
+    println "   Got Person with id: ${oldestPersonInSpace.getId()} and age: ${oldestPersonInSpace.getAge()}"
     println ""
     println ""
 
@@ -144,10 +144,10 @@ try {
     Person youngest = (Person) aggregationResult.get(0);
     Number average = (Number) aggregationResult.get(1);
     Number minValue = (Number) aggregationResult.get(2);
-    println "Multiple aggregation result:\n" +
-            "   Youngest(minEntry): ${youngest} with age: ${youngest.getAge()}\n" +
-            "   Average of ages(average): ${average}\n" +
-            "   Minimum value of age(minValue): ${minValue}"
+    println "   Multiple aggregation result:\n" +
+            "      Youngest(minEntry): ${youngest} with age: ${youngest.getAge()}\n" +
+            "      Average of ages(average): ${average}\n" +
+            "      Minimum value of age(minValue): ${minValue}"
     println ""
     println ""
 
