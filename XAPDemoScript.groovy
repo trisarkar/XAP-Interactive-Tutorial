@@ -234,8 +234,8 @@ try {
         Demo.print_color("_RUnable to find myDataGrid processing unit_X")
         System.exit(1)
     }
-    if (! pus.waitFor(1)) {
-        Demo.print_color("_RUnable to find myDataGrid instances_X")
+    if (! pus.waitFor(1, 10, TimeUnit.SECONDS)) {
+        Demo.print_color("_RUnable to find myDataGrid processing unit instances_X")
         System.exit(1)
     }
 

@@ -50,8 +50,8 @@ try {
         print_color("|RED|Unable to find myDataGrid processing unit|CLEAR|")
         System.exit(1)
     }
-    if (! pus.waitFor(1)) {
-        print_color("|RED|Unable to find myDataGrid instances|CLEAR|")
+    if (! pus.waitFor(1, 10, TimeUnit.SECONDS)) {
+        print_color("|RED|Unable to find myDataGrid processing unit instances|CLEAR|")
         System.exit(1)
     }
 
