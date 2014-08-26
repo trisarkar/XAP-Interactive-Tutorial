@@ -44,6 +44,7 @@ try {
     def lookupgroups = System.getenv("LOOKUPGROUPS")
     def gridname = "myDataGrid"
 
+    println "Locating ${gridname} processing unit with locators [${lookuplocators}] and groups [${lookupgroups}]"
     Admin admin = new AdminFactory().useDaemonThreads(true).addLocators(lookuplocators).addGroups(lookupgroups).createAdmin();
     def pus = admin.getProcessingUnits().waitFor(gridname, 10, TimeUnit.SECONDS);
     if (pus == null) {
