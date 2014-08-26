@@ -1,9 +1,9 @@
 #!/bin/bash
-LIGHT_GREEN='\e[1;32m'
-LIGHT_BLUE='\e[1;34m'
-CYAN='\e[1;36m'
-NC='\e[0m' # No Color
-RED='\e[0;31m'
+LIGHT_GREEN='\x1B[1;32m'
+LIGHT_BLUE='\x1B[1;34m'
+CYAN='\x1B[1;36m'
+NC='\x1B[0m' # No Color
+RED='\x1B[0;31m'
 
 if [ -z "$GS_HOME" ]; then
     echo -e "${RED}GS_HOME environment variable is not set${NC}"
