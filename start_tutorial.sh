@@ -19,6 +19,8 @@ fi
 
 trap '' 2
 
+echo "NIC_ADDRRRRRRRRRRRRRRRRRRRR ${NIC_ADDR}"
+
 while true; do
 clear
 echo ""
