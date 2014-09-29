@@ -225,6 +225,10 @@ public class Demo {
 
 
 try {
+	 
+    def nicAddr = System.getenv("NIC_ADDR")
+    println "nic addrrrrrrrrrrrr " + nicAddr
+
     def lookuplocators = System.getenv("LOOKUPLOCATORS")
 	def lookupgroups = System.getenv("LOOKUPGROUPS")
     def gridname = "myDataGrid"
