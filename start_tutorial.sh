@@ -43,9 +43,9 @@ while true; do
 read case;
 
 case "$case" in
-1 ) $GS_HOME/tools/groovy/bin/groovy XAPDemoScript.groovy ; break ;;
-2 ) $GS_HOME/tools/groovy/bin/groovy XAP10NewAPI.groovy ; break ;;
-3 ) clear ; $GS_HOME/tools/groovy/bin/groovysh ; break ;;
+1 ) $GS_HOME/tools/groovy/bin/groovy -Djava.rmi.server.hostname=${NIC_ADDR} XAPDemoScript.groovy ; break ;;
+2 ) $GS_HOME/tools/groovy/bin/groovy -Djava.rmi.server.hostname=${NIC_ADDR} XAP10NewAPI.groovy ; break ;;
+3 ) clear ; $GS_HOME/tools/groovy/bin/groovysh -Djava.rmi.server.hostname=${NIC_ADDR} ; break ;;
 0 ) break ;;
 esac
 echo -n "Invalid option, please try again: "
