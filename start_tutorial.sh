@@ -43,14 +43,15 @@ while true; do
 read case;
 
 SYSTEM_PROPERTIES="-Djava.rmi.server.hostname=${NIC_ADDR}"
-if [ -z "$LRMI_COMM_MIN_PORT" ] && [ -z "$LRMI_COMM_MAX_PORT" ]; then
+if [ -n "$LRMI_COMM_MIN_PORT" ] && [ -n "$LRMI_COMM_MAX_PORT" ]; then
 SYSTEM_PROPERTIES="${SYSTEM_PROPERTIES} -Dcom.gs.transport_protocol.lrmi.bind-port=$LRMI_COMM_MIN_PORT-$LRMI_COMM_MAX_PORT"
 fi
 
+
 case "$case" in
-1 ) $GS_HOME/tools/groovy/bin/groovy -Djava.rmi.server.hostname=${NIC_ADDR} XAPDemoScript.groovy ; break ;;
-2 ) $GS_HOME/tools/groovy/bin/groovy -Djava.rmi.server.hostname=${NIC_ADDR} XAP10NewAPI.groovy ; break ;;
-3 ) clear ; $GS_HOME/tools/groovy/bin/groovysh -Djava.rmi.server.hostname=${NIC_ADDR} ; break ;;
+1 ) $GS_HOME/tools/groovy/bin/groovy ${SYSTEM_PROPERTIES} XAPDemoScript.groovy ; break ;;
+2 ) $GS_HOME/tools/groovy/bin/groovy ${SYSTEM_PROPERTIES} XAP10NewAPI.groovy ; break ;;
+3 ) clear ; $GS_HOME/tools/groovy/bin/groovysh ${SYSTEM_PROPERTIES} ; break ;;
 0 ) break ;;
 esac
 echo -n "Invalid option, please try again: "
